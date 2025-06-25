@@ -1,0 +1,7 @@
+{
+    "editor.renderWhitespace": "boundary",
+    "files.autoSave": "afterDelay",
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    }
+}
