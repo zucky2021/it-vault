@@ -1,0 +1,18 @@
+---
+description: 
+globs: **/article/qiita/*.md
+alwaysApply: false
+---
+---
+description: Qiita用技術記事の基本ルール
+globs: ["**/article/qiita/*.md"]
+alwaysApply: false
+---
+
+1. 記事タイトルは簡潔かつ内容を端的に表現すること。
+2. 導入部分で記事の目的と対象読者を明確にすること。
+3. コード例には必ず説明コメントを付与すること。
+4. Markdownの見出し（##, ###）を適切に使い、論理構造を明確にすること。
+5. 参考リンクや引用元は最後にまとめて記載すること。
+6. です・ます調で統一し、読みやすさを重視すること。
+
