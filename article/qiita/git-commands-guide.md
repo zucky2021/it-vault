@@ -16,6 +16,37 @@
 - 各コマンドの具体的な使用例
 - トラブル時の対処法
 
+### 用語解説
+
+#### commit-hash（コミットハッシュ）とは？
+
+`commit-hash`は、Gitの各コミットに割り当てられる一意の識別子です。
+
+**特徴：**
+
+- **形式**: 40文字の英数字（例：`95adcc68aff15f4f83b7f8707f03b4b895a3afd9`）
+- **一意性**: 世界中で重複しない一意の値
+- **短縮形**: 最初の7文字程度でも識別可能（例：`95adcc6`）
+
+**確認方法：**
+
+```bash
+# コミット履歴を表示（ハッシュ付き）
+git log
+
+# 短縮形で表示
+git log --oneline
+
+# 特定のコミットの詳細を表示
+git show commit-hash
+```
+
+**使用例：**
+
+- `git revert 95adcc6` - 特定のコミットを取り消す
+- `git checkout 95adcc6` - 特定のコミットの状態に戻る
+- `git cherry-pick 95adcc6` - 特定のコミットを現在のブランチに取り込む
+
 ---
 
 ## 1. 基本的な操作コマンド
@@ -112,7 +143,7 @@ git branch -d branch-name
 git branch -m old-branch-name new-branch-name
 
 # ひとつ前のブランチに切り替え
-git checkout -
+git switch -
 ```
 
 ---
@@ -182,6 +213,10 @@ git revert commit-hash1 commit-hash2
 
 # マージコミットを取り消す
 git revert -m 1 merge-commit-hash
+
+# 実際の使用例
+git revert 95adcc6  # 短縮形のハッシュを使用
+git revert 95adcc68aff15f4f83b7f8707f03b4b895a3afd9  # 完全なハッシュを使用
 ```
 
 **`git revert`と`git reset`の違い：**
@@ -278,7 +313,9 @@ git stash branch new-branch-name
 # 他のブランチの特定コミットを現在のブランチに取り込み
 git cherry-pick commit-hash
 
-# 例：95adcc68aff15f4f83b7f8707f03b4b895a3afd9
+# 実際の使用例
+git cherry-pick 95adcc6  # 短縮形のハッシュを使用
+git cherry-pick 95adcc68aff15f4f83b7f8707f03b4b895a3afd9  # 完全なハッシュを使用
 ```
 
 ### 8.2 未追跡ファイルの削除
@@ -341,6 +378,10 @@ git reset --hard commit-hash
 
 # 3. 安全にマージを取り消す場合（推奨）
 git revert -m 1 merge-commit-hash
+
+# 実際の使用例
+git reset --hard 95adcc6  # 特定のコミットに戻す
+git revert -m 1 a1b2c3d  # マージコミットを取り消す
 ```
 
 #### 問題：コンフリクトが発生した場合
